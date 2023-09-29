@@ -9,12 +9,12 @@ const spotifyApi = new SpotifyWebApi({
 
 const useSpotify = () => {
   const {data: session} = useSession();
-  useEffect(() => {
+  /* useEffect(() => {
     if (session) {
       if (session.error === "RefreshAccessTokenError") signIn();
-      spotifyApi.setAccessToken(session.user.accessToken);
+      spotifyApi.setAccessToken(session.user.access);
     }
-  }, [session]);
+  }, [session]); */
 
   return spotifyApi;
 };
