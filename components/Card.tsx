@@ -1,0 +1,71 @@
+import {Card} from "@/shared/types";
+import Image from "next/image";
+import Link from "next/link";
+
+const Card = ({type, title, image, href, styles, subtitle, cardId}: Card) => {
+  switch (type) {
+    case "artist":
+      return (
+        <Link
+          href={href}
+          className="w-[180px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
+          <div className="w-[150px] pt-4 pb-6">
+            <Image
+              src={image}
+              width={150}
+              height={150}
+              alt={title}
+              className="rounded-[50%]"
+              priority={true}
+            />
+            <h2 className="text-[1.2rem] w-auto pt-4">{title}</h2>
+            <h3 className="text-[1rem] w-auto font-extralight pt-1">Artista</h3>
+          </div>
+        </Link>
+      );
+    case "artist-skeleton":
+      return (
+        <div className="w-[180px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
+          <div className="animate-pulse w-[150px] pt-4 pb-6">
+            <div className=" bg-[#9b99a9] rounded-[50%] w-[150px] h-[150px]"></div>
+            <h2 className="text-[1.2rem] w-auto pt-4">aasd</h2>
+            <h3 className="text-[1rem] w-auto font-extralight pt-1">Artista</h3>
+          </div>
+        </div>
+      );
+    case "playlist":
+      return (
+        <Link
+          id={cardId}
+          href={href}
+          className="w-[180px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
+          <div className="w-[150px] pt-4 pb-6">
+            <Image
+              src={image}
+              width={150}
+              height={150}
+              alt={title}
+              className="rounded-[0.5rem]"
+              priority={true}
+            />
+            <h2 className="text-[1.2rem] w-auto pt-4">{title}</h2>
+            <h3 className="text-[1rem] w-auto font-extralight pt-1">
+              {subtitle}
+            </h3>
+          </div>
+        </Link>
+      );
+    default:
+      return (
+        <div>
+          <Link
+            href={href}
+            className="flex gap-2 items-center w-full cursor-pointer hover:bg-[#1c1931] p-2 rounded-[0.5rem]">
+            <Image src={image} width={40} height={40} alt={title} />
+            <h2 className="text-ellipsis">{title}</h2>
+          </Link>
+        </div>
+      );
+  }
+};
+export default Card;

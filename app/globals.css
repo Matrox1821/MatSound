@@ -18,10 +18,32 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-start-rgb));
+  height: 100vh;
+  overflow: hidden;
+  gap: 0.75rem;
+}
+.height-footer {
+  height: calc(100% - 6rem);
+}
+.height-header {
+  height: calc(100% - 4rem);
+}
+
+.swiper {
+  display: none;
+  display: flex;
+  flex-direction: column-reverse;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #88888850;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
 }
