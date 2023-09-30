@@ -16,7 +16,7 @@ export const Playlists = () => {
     error,
     isLoading,
   } = useSWR(`?token=${token}`, getCurrentUserPlaylists);
-  if (isLoading)
+  if (isLoading || !token)
     return (
       <>
         <h2 className="text-[1.5rem] font-bold pt-5 pb-5">Tus Playlists</h2>

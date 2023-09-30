@@ -26,8 +26,8 @@ export const getArtistById = (url: string) =>
 
 //track
 export const getTrakById = (url: string) =>
-  fetch(`http://localhost:3000/api/track?${url}`).then((r) => r.json()); */
-
+  fetch(`http://localhost:3000/api/track?${url}`).then((r) => r.json());
+ */
 export const getUserPlaylists = (url: string) =>
   fetch(`https://matfy-eight.vercel.app/api/user/${url}`).then((r) => r.json());
 
