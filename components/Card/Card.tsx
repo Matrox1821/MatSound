@@ -1,14 +1,22 @@
-import {Card} from "@/shared/types";
+import {Card as props} from "@/shared/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({type, title, image, href, styles, subtitle, cardId}: Card) => {
+export const Card = ({
+  type,
+  title,
+  image,
+  href,
+  styles,
+  subtitle,
+  cardId,
+}: props) => {
   switch (type) {
     case "artist":
       return (
         <Link
           href={href}
-          className="w-[180px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
+          className="w-[180px] h-[260px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
           <div className="w-[150px] pt-4 pb-6">
             <Image
               src={image}
@@ -23,22 +31,12 @@ const Card = ({type, title, image, href, styles, subtitle, cardId}: Card) => {
           </div>
         </Link>
       );
-    case "artist-skeleton":
-      return (
-        <div className="w-[180px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
-          <div className="animate-pulse w-[150px] pt-4 pb-6">
-            <div className=" bg-[#9b99a9] rounded-[50%] w-[150px] h-[150px]"></div>
-            <h2 className="text-[1.2rem] w-auto pt-4">aasd</h2>
-            <h3 className="text-[1rem] w-auto font-extralight pt-1">Artista</h3>
-          </div>
-        </div>
-      );
     case "playlist":
       return (
         <Link
           id={cardId}
           href={href}
-          className="w-[180px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
+          className="w-[180px] h-[260px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
           <div className="w-[150px] pt-4 pb-6">
             <Image
               src={image}
@@ -68,4 +66,3 @@ const Card = ({type, title, image, href, styles, subtitle, cardId}: Card) => {
       );
   }
 };
-export default Card;

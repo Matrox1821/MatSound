@@ -2,11 +2,9 @@
 import {useSession} from "next-auth/react";
 import useSpotify from "@/hooks/useSpotify";
 import {useEffect, useState} from "react";
-import Card from "../Card";
+import {Card} from "@/components/Card";
 import useSWR from "swr";
-
-const getUserPlaylists = (url: string) =>
-  fetch(`https://matfy-eight.vercel.app/api/user/${url}`).then((r) => r.json());
+import {getUserPlaylists} from "@/helpers/fetchData";
 
 export const SidebarPlaylists = () => {
   const {data: session} = useSession();

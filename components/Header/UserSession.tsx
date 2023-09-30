@@ -60,7 +60,7 @@ export const UserSession = () => {
   }
   return (
     <nav>
-      <CustomLink icon={icons.header.sessionClosed} link="/login" />
+      <CustomLink title="Iniciar Sesión" link="/login" />
     </nav>
   );
 };

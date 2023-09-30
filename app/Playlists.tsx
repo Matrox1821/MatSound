@@ -1,13 +1,11 @@
 "use client";
 import useSpotify from "@/hooks/useSpotify";
 import useSWR from "swr";
-import Card from "@/components/Card";
+import {Card, CardSkeleton} from "@/components/Card";
 import {getCurrentUserPlaylists} from "@/helpers/fetchData";
 import {Swiper, SwiperSlide, useSwiper} from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import {SwiperButtons} from "@/components/SwiperButtons";
 
 export const Playlists = () => {
@@ -22,9 +20,23 @@ export const Playlists = () => {
     return (
       <>
         <h2 className="text-[1.5rem] font-bold pt-5 pb-5">Tus Playlists</h2>
-        <div className="flex justify-center items-center h-full">
-          <span className="loading loading-spinner text-[#282443] w-[2rem] h-[2rem]"></span>
-        </div>
+        <ul className="flex gap-3 overflow-hidden">
+          <li>
+            <CardSkeleton type="playlist" />
+          </li>
+          <li>
+            <CardSkeleton type="playlist" />
+          </li>
+          <li>
+            <CardSkeleton type="playlist" />
+          </li>
+          <li>
+            <CardSkeleton type="playlist" />
+          </li>
+          <li>
+            <CardSkeleton type="playlist" />
+          </li>
+        </ul>
       </>
     );
 
@@ -32,12 +44,16 @@ export const Playlists = () => {
 
   return (
     <>
-      <h2 className="text-[1.5rem] font-bold pt-5 pb-5">Tus Playlists</h2>
-      <Swiper className="swiper" spaceBetween={50} slidesPerView={3}>
-        <SwiperButtons />
+      <Swiper
+        slidesPerView="auto"
+        className="!flex flex-col-reverse gap-2 m-12">
+        <div className="flex items-center justify-between">
+          <h2 className="text-[1.5rem] font-bold">Tus Playlists</h2>
+          <SwiperButtons />
+        </div>
         {playlists.items &&
           playlists.items.map((playlist: any, i: any) => (
-            <SwiperSlide key={playlist.id}>
+            <SwiperSlide key={playlist.id} className="!w-auto !mr-4 ">
               <Card
                 type="playlist"
                 title={playlist.name}
