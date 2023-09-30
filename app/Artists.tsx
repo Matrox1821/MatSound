@@ -13,6 +13,7 @@ export const Artists = () => {
     error,
     isLoading,
   } = useSWR(`token=${token}`, getArtistsFollowing);
+  console.log(token);
   console.log(artists);
   if (isLoading || !token)
     return (
