@@ -6,7 +6,7 @@ import Card from "../Card";
 import useSWR from "swr";
 
 const getUserPlaylists = (url: string) =>
-  fetch(`http://localhost:3000/api/user/${url}`).then((r) => r.json());
+  fetch(`https://matfy-eight.vercel.app/api/user/${url}`).then((r) => r.json());
 
 export const SidebarPlaylists = () => {
   const {data: session} = useSession();
