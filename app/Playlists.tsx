@@ -43,7 +43,7 @@ export const Playlists = () => {
   if (error) return <div>failed to load</div>;
 
   return (
-    <>
+    <div>
       <Swiper
         slidesPerView="auto"
         className="!flex flex-col-reverse gap-2 m-12">
@@ -51,19 +51,18 @@ export const Playlists = () => {
           <h2 className="text-[1.5rem] font-bold">Tus Playlists</h2>
           <SwiperButtons />
         </div>
-        {playlists.items &&
-          playlists.items.map((playlist: any, i: any) => (
-            <SwiperSlide key={playlist.id} className="!w-auto !mr-4 ">
-              <Card
-                type="playlist"
-                title={playlist.name}
-                image={playlist.images[0].url ?? playlist.images[0].url}
-                href={`/playlist/${playlist.id}`}
-                cardId={`playlist-${i}`}
-              />
-            </SwiperSlide>
-          ))}
+        {playlists.items.map((playlist: any, i: any) => (
+          <SwiperSlide key={playlist.id} className="!w-auto !mr-4 ">
+            <Card
+              type="playlist"
+              title={playlist.name}
+              image={playlist.images[0].url ?? playlist.images[0].url}
+              href={`/playlist/${playlist.id}`}
+              cardId={`playlist-${i}`}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </>
+    </div>
   );
 };

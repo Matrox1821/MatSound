@@ -6,7 +6,6 @@ export default function Home() {
     <article className="p-4 pt-[4rem] h-full" id="container_body">
       <Artists />
       <Playlists />
-      <Playlists />
     </article>
   );
 }
