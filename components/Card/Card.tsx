@@ -16,6 +16,7 @@ export const Card = ({
       return (
         <Link
           href={href}
+          as="image"
           className="w-[180px] h-[260px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
           <div className="w-[150px] pt-4 pb-6">
             <Image
@@ -36,6 +37,7 @@ export const Card = ({
         <Link
           id={cardId}
           href={href}
+          as="image"
           className="w-[180px] h-[260px] flex flex-col items-center gap-2 cursor-pointer bg-[#12101e] hover:bg-[#1c1931] rounded-[0.5rem]">
           <div className="w-[150px] pt-4 pb-6">
             <Image
