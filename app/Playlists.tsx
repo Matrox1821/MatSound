@@ -41,7 +41,7 @@ export const Playlists = () => {
     );
 
   if (error) return <div>failed to load</div>;
-  if (!playlists) return <></>;
+  if (!playlists.items) return <></>;
   return (
     <div>
       <Swiper
