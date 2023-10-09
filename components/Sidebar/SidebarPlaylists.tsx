@@ -14,6 +14,7 @@ export const SidebarPlaylists = () => {
   } = useSWR(`?token=${token}`, getCurrentUserPlaylists);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>failed to load</div>;
+  if (!playlists) return <></>;
   return (
     <ul className="overflow-y-scroll flex flex-col gap-3 w-full p-2 h-[35rem]">
       {playlists.items.map((playlist: any) => (

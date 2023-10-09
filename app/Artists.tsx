@@ -37,6 +37,7 @@ export const Artists = () => {
       </>
     );
   if (error) return <div>failed to load</div>;
+  if (!artists) return <></>;
   return (
     <div>
       <h1 className="text-[1.5rem] font-bold pb-5">Artistas recientes</h1>
