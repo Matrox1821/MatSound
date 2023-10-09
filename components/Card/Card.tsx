@@ -64,7 +64,7 @@ export const Card = ({
             href={href}
             className="flex gap-2 items-center w-full cursor-pointer hover:bg-[#1c1931] p-2 rounded-[0.5rem]">
             <Image src={image} width={40} height={40} alt={title} />
-            <h2 className="text-ellipsis">{title}</h2>
+            <h2 className="truncate">{title}</h2>
           </Link>
         </div>
       );

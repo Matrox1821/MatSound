@@ -19,7 +19,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={inter.className} suppressHydrationWarning={true}>
         <AuthProvider>
           <div className="flex height-footer fixed w-screen">
-            <Sidebar />
+            {/* <Sidebar /> */}
             <main
               className="w-full sm:w-[80vw] bg-[#101010] overflow-y-scroll"
               id="main_container">
