@@ -5,7 +5,7 @@ export default function Login() {
   return (
     <div>
       <Modal
-        title="Bienvenido a Matfy!"
+        title="Bienvenido a MatSound!"
         subtitle="Autoriza tu cuenta de Spotify">
         <LoginButton />
       </Modal>

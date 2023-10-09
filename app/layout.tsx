@@ -9,7 +9,7 @@ import AuthProvider from "@/context/AuthProvider";
 const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Matfy",
+  title: "MatSound",
   description: "Clon de Spotify",
 };
 
@@ -18,14 +18,17 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="es">
       <body className={inter.className} suppressHydrationWarning={true}>
         <AuthProvider>
-          <div className="flex height-footer">
+          <div className="flex height-footer fixed w-screen">
             <Sidebar />
-            <main className="w-full sm:w-[80vw] bg-[#101010] h-full">
+            <main
+              className="w-full sm:w-[80vw] bg-[#101010] overflow-y-scroll"
+              id="main_container">
               <Header />
+
               {children}
+              <Footer />
             </main>
           </div>
-          <Footer />
         </AuthProvider>
       </body>
     </html>

@@ -14,7 +14,6 @@ export const UserSession = () => {
   const handleSearch = () => {
     setIsOpenSearch(!isOpenSearch);
   };
-
   if (session) {
     return (
       <nav className="flex gap-2">

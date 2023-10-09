@@ -12,36 +12,32 @@ export default function Page({params}: any) {
     error,
     isLoading,
   } = useSWR(`token=${token}&id=${params.id}`, getPlaylistById);
-  return (
-    <>
-      {playlist && token ? (
-        <>
-          <div className="flex gap-4">
-            <Image
-              src={playlist?.images[0].url}
-              width={150}
-              height={150}
-              alt={playlist?.name}
-            />
-            <h1 className="text-[1.5rem]">{playlist?.name}</h1>
-          </div>
-          <ul className="flex flex-col gap-5 p-5 h-[35rem] overflow-y-scroll">
-            {playlist?.tracks.items.map(({track}: any) => (
-              <li key={track.id} className="flex items-center gap-4">
-                <Image
-                  src={track.album.images[0].url}
-                  width={50}
-                  height={50}
-                  alt={track.album}
-                />
-                {track.name}
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </>
-  );
+  if (playlist && token)
+    return (
+      <>
+        <div className="flex gap-4">
+          <Image
+            src={playlist?.images[0].url}
+            width={150}
+            height={150}
+            alt={playlist?.name}
+          />
+          <h1 className="text-[1.5rem]">{playlist?.name}</h1>
+        </div>
+        <ul className="flex flex-col gap-5 p-5 h-[35rem] overflow-y-scroll">
+          {playlist?.tracks.items.map(({track}: any) => (
+            <li key={track.id} className="flex items-center gap-4">
+              <Image
+                src={track.album.images[0].url}
+                width={50}
+                height={50}
+                alt={track.album}
+              />
+              {track.name}
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  return <p>Loading...</p>;
 }

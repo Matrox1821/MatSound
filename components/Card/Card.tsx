@@ -46,10 +46,12 @@ export const Card = ({
               className="rounded-[0.5rem]"
               priority={true}
             />
-            <h2 className="text-[1.2rem] w-auto pt-4">{title}</h2>
-            <h3 className="text-[1rem] w-auto font-extralight pt-1">
-              {subtitle}
-            </h3>
+            <h2 className="text-[1.2rem] w-auto pt-4 truncate ">{title}</h2>
+            {subtitle && (
+              <h3 className="text-[1rem] w-auto font-extralight pt-1">
+                {subtitle}
+              </h3>
+            )}
           </div>
         </Link>
       );

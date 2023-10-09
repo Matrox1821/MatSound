@@ -19,9 +19,10 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-start-rgb));
-  height: 100vh;
   overflow: hidden;
+  height: calc(100%);
   gap: 0.75rem;
+  margin-bottom: 6rem;
 }
 .height-footer {
   height: calc(100% - 6rem);
@@ -30,15 +31,17 @@ body {
   height: calc(100% - 4rem);
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
+@media (min-width: 500px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
 
-::-webkit-scrollbar-track:hover {
-  background: #88888850;
-}
+  ::-webkit-scrollbar-track:hover {
+    background: #88888850;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
 }

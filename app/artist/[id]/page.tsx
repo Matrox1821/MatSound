@@ -1,8 +1,10 @@
 "use client";
 import useSpotify from "@/hooks/useSpotify";
 import useSWR from "swr";
-import {Library} from "./Library";
+import {Albums} from "./Albums";
 import {getArtistById} from "@/helpers/fetchData";
+import Image from "next/image";
+import {TopTracks} from "./TopTracks";
 
 export default function Page({params}: any) {
   const spotifyApi = useSpotify();
@@ -11,39 +13,28 @@ export default function Page({params}: any) {
     data: artist,
     error,
     isLoading,
-  } = useSWR(`token=${token}&id=${params.id}`, getArtistById);
+  } = useSWR(`${params.id}?token=${token}`, getArtistById);
 
-  return (
-    <>
-      <Library id={params.id} />
-      {/* {artist && token ? (
-        <>
-          <div className="flex gap-4">
-            <Image
-              src={artist?.images[0].url}
-              width={150}
-              height={150}
-              alt={artist?.name}
-            />
-            <h1 className="text-[1.5rem]">{artist?.name}</h1>
-          </div>
-          <ul className="flex flex-col gap-5 p-5 h-[35rem] overflow-y-scroll">
-            {artist?.tracks.items.map(({track}: any) => (
-              <li key={track.id} className="flex items-center gap-4">
-                <Image
-                  src={track.album.images[0].url}
-                  width={50}
-                  height={50}
-                  alt={track.album}
-                />
-                {track.name}
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )} */}
-    </>
-  );
+  if (artist)
+    return (
+      <article>
+        <header className="h-[18rem] w-screen">
+          <Image
+            className="aspect-auto h-[18rem] object-cover "
+            src={artist.images[0].url}
+            width={1080}
+            height={720}
+            alt={artist?.name}
+            priority
+          />
+          <h2 className="pl-2 z-20 relative text-white text-[4rem] h-[4rem] bottom-[5rem] font-bold leading-none	">
+            {artist?.name}
+          </h2>
+          <div className="relative h-[18rem] bottom-[22rem]  bg-gradient-to-t from-[#101010] z-10"></div>
+        </header>
+        <TopTracks id={params.id} />
+        <Albums id={params.id} />
+      </article>
+    );
+  if (isLoading) return <>Loading</>;
 }

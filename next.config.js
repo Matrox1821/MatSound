@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "seeded-session-images.scdn.co",
       },
+      {
+        protocol: "https",
+        hostname: "image-cdn-fa.spotifycdn.com",
+      },
     ],
   },
 };

@@ -2,10 +2,15 @@ import SpotifyWebApi from "spotify-web-api-node";
 
 SpotifyWebApi;
 const scope = [
+  "ugc-image-upload",
+  "playlist-modify-private",
+  "playlist-modify-public",
+  "user-follow-modify",
+  "user-read-playback-position",
+
   "user-read-email",
   "playlist-read-private",
   "playlist-read-collaborative",
-  "user-read-email",
   "streaming",
   "user-read-private",
   "user-library-read",
