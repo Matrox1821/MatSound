@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import undead from "./../assets/undead-yoasobi.jpg"
+import UndeadMp3 from "./../assets/UNDEAD.mp3"
+interface Props{
+  title?:string
+  artist?:string
+  image?:string
+}
+const { title,artist } = Astro.props;
+---
+
+<li class="flex flex-col flex-[0_0_10rem] w-96 p-3 rounded-lg color-[rgba(var(--content),1)] duration-150 gap-2">
+  <Image src={undead} alt="yoasobi song" class="object-fill aspect-square w-full rounded-md"/>
+  <h2 class="font-medium text-xl m-0 leading-5 ">
+    {title?title:"Undead"}
+  </h2>
+  <span class="text-xs font-medium opacity-70">
+    {artist?artist:"YOASOBI"}
+  </span>
+  <audio id="audioElement">
+    <source src={UndeadMp3} type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+  <button id="playButton">Reproducir</button>
+  <button id="pauseButton">Pausar</button>
+</li>
+<style>
+  @media (hover:hover){
+    li{
+    background-color: rgba(var(--bg-contrast),.4);
+  }}
+</style>
