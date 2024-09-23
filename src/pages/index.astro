@@ -2,89 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Track from '../components/Track.astro';
 
+import { TRACKS } from '../mock';
 ---
 
 <Layout title="MatSound">
     <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
+      {TRACKS.map(track=><Track title={track.name} artist={track.artist} image={track.image} song={track.song}/>)}
     </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
-    <ul class="flex overflow-auto">
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-      <Track/>
-    </ul>
+    
 </Layout>

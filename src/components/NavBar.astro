@@ -15,7 +15,7 @@ const elements=[
 ]
 
 ---
-<footer class="w-screen h-60 bg-gradient-to-t from-black/80 from-0% via-black/20 via-60% to-transparent to-90% bottom-0 fixed flex items-end justify-around ">
+<nav class="w-screen h-16 bg-gradient-to-t from-black/80 from-0% via-black/20 via-60% to-transparent to-90% bottom-0 fixed flex items-end justify-around">
   {
     elements.map(element=>{
       const {Icon,IconSolid,label,href} = element;
@@ -23,4 +23,4 @@ const elements=[
       const IconElement=isActive?IconSolid:Icon
       return (<a class="flex flex-col items-center w-20 gap-1 text-[rgba(var(--content),.9)] text-sm font-medium" href={href}><IconElement />{label}</a>)})
   }
-</footer>
+</nav>

@@ -1,5 +1,5 @@
 ---
-import Footer from './../components/Footer.astro';
+import NavBar from '../components/NavBar.astro';
 import { ClientRouter } from 'astro:transitions';
 interface Props {
   
@@ -25,7 +25,8 @@ const { title } = Astro.props;
     <main class="w-screen relative">
 		  <slot />
     </main>
-    <Footer/>
+    
+    <NavBar/>
 	</body>
 </html>
 
