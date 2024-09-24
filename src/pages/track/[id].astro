@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets" 
 import { TRACKS } from "../../mock";
-import {BackgroundColor} from "../../components/BackgroundColor.tsx"
 import Layout from "../../layouts/Layout.astro";
 import BackButton from "../../components/BackButton.astro";
 export async function getStaticPaths(){
@@ -15,11 +14,11 @@ const { image, name, artist, id } = Astro.props;
 
 ---
 <Layout title={`${name} - MatSound`}>
-  <BackgroundColor image={image}/>
+  <div id="background-color"/>
   <div class="w-full flex flex-col">
     <BackButton/>
     <div class="w-full flex justify-center items-center">
-      <Image src={image} alt={name} class="w-52 rounded-[1px]" transition:name={id}>
+      <Image src={image} alt={name} class="w-52 rounded-[1px]" transition:name={id} id="image">
     </div>
     <h1>{name}</h1>
     <h2>{artist}</h2>
@@ -27,4 +26,10 @@ const { image, name, artist, id } = Astro.props;
 
   </div>
 </Layout>
+<script>
+  import { average } from 'color.js'
+  const background=document.getElementById("background-color")
+  const image=document.getElementById("image") as HTMLImageElement
+  average(image)
+</script>
 
