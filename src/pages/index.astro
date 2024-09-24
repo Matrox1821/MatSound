@@ -7,7 +7,7 @@ import { TRACKS } from '../mock';
 
 <Layout title="MatSound">
     <ul class="flex overflow-auto">
-      {TRACKS.map(track=><Track title={track.name} artist={track.artist} image={track.image} song={track.song}/>)}
+      {TRACKS.map(track=><Track title={track.name} artist={track.artist} image={track.image} song={track.song} id={track.id} />)}
     </ul>
     
 </Layout>
