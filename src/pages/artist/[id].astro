@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets" 
+import { ARTISTS,TracksByArtistName } from "../../mock";
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../../components/BackButton.astro";
+import { BackgroundColor } from "../../components/BackgroundColor";
+import List from "../../components/List.astro";
+import type { AlbumProps, TrackProps } from "../../helpers/types";
+
+export async function getStaticPaths(){
+  return ARTISTS.map(artist=>({
+    params:{id:artist.id},
+    props:{...artist}
+  }))
+}
+const { image, name, id,albums } = Astro.props;
+const artistAlbums=albums.filter((album) => album);
+const artistSongs=TracksByArtistName(name) as TrackProps[]
+---
+<Layout title={`${name} - MatSound`}>
+  <div class="absolute w-screen ">
+  </div>
+  <main class="w-screen relative p-4 pb-20 z-10 overflow-x-hidden">
+    <BackgroundColor image={image} client:load/>
+    <BackButton/>
+      <div class="w-full flex justify-center items-center z-20">
+        <Image src={image} alt={name} class="w-52 rounded-full shadow-[0_0_80px_0_rgba(0,0,0,0.8)]" transition:name={id+"-to-page"} id="image"></Image>
+      </div>
+      <h1 class="relative font-extrabold text-5xl mt-3 text-ellipsis overflow-hidden h-[3rem] z-20">{name}</h1>
+      <div class="w-full flex flex-col z-20 pt-10 gap-6">
+        {artistSongs.length>0&&<List type="Tracks" data={artistSongs as TrackProps[]} title="Canciones" playlistStyle/> }
+        {artistAlbums.length>0&&<List type="Albums" data={artistAlbums as AlbumProps[]} title="Álbumes"/> }
+      </div>
+  </main>
+</Layout>
+

@@ -3,33 +3,35 @@ import { Image } from "astro:assets"
 import { TRACKS } from "../../mock";
 import Layout from "../../layouts/Layout.astro";
 import BackButton from "../../components/BackButton.astro";
+import { BackgroundColor } from "../../components/BackgroundColor";
+import { PlayButton } from "../../components/PlayButton";
 export async function getStaticPaths(){
   return TRACKS.map(track=>({
     params:{id:track.id},
-    props:{...track}
+    props:{...track,track}
   }))
 }
 
-const { image, name, artist, id } = Astro.props;
+const { image, name, artist, id,track } = Astro.props;
 
 ---
 <Layout title={`${name} - MatSound`}>
-  <div id="background-color"/>
-  <div class="w-full flex flex-col">
-    <BackButton/>
-    <div class="w-full flex justify-center items-center">
-      <Image src={image} alt={name} class="w-52 rounded-[1px]" transition:name={id} id="image">
+  <main class="w-screen relative p-4" transition:name={id+"-to-background"}>
+    <BackgroundColor image={image} client:load/>
+    <div class="w-full flex flex-col z-10 relative gap-4">
+      <BackButton/>
+      <div class="w-full flex justify-center items-center ">
+        <Image src={image} alt={name} class="w-52 rounded-[1px] shadow-[0_0_80px_0_rgba(0,0,0,0.8)]" transition:name={id+"-to-page"} id="image">
+      </div>
+      <div class="flex justify-between">
+        <div>
+          <h1 transition:name={id+"-to-title"} class="font-bold text-3xl m-0 leading-5">{name}</h1>
+          <h2 transition:name={id+"-to-artist"} class="font-normal text-md m-0 leading-5">{artist}</h2>
+        </div>
+        
+        <PlayButton song={track} client:load/>
+      </div>
     </div>
-    <h1>{name}</h1>
-    <h2>{artist}</h2>
-    <a href="./xd">{"link to"+artist}</a>
-
-  </div>
+  </main>
 </Layout>
-<script>
-  import { average } from 'color.js'
-  const background=document.getElementById("background-color")
-  const image=document.getElementById("image") as HTMLImageElement
-  average(image)
-</script>
 

@@ -1,13 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Track from '../components/Track.astro';
+import List from '../components/List.astro';
 
-import { TRACKS } from '../mock';
+import { ALBUMS, ARTISTS, TRACKS } from '../mock';
 ---
 
 <Layout title="MatSound">
-    <ul class="flex overflow-auto">
-      {TRACKS.map(track=><Track title={track.name} artist={track.artist} image={track.image} song={track.song} id={track.id} />)}
-    </ul>
-    
-</Layout>
+  <main class="w-screen relative px-4 flex flex-col gap-6 pt-10 pb-40">
+    <List type="Tracks" data={TRACKS} title="Recomendados" transition="to-page"/>
+    <List type="Albums" data={ALBUMS} title="Álbumes" transition="to-page"/>
+    <List type="Artists" data={ARTISTS} title="Artistas escuchados" transition="to-page"/>
+  </main>
+</Layout> 

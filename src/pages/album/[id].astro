@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets" 
+import { ALBUMS } from "../../mock";
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../../components/BackButton.astro";
+import { BackgroundColor } from "../../components/BackgroundColor";
+
+export async function getStaticPaths(){
+  return ALBUMS.map(album=>({
+    params:{id:album.id},
+    props:{...album}
+  }))
+}
+
+const { image, name, artist, id } = Astro.props;
+
+---
+<Layout title={`${name} - MatSound`}>
+  <main class="w-screen relative p-4">
+  <BackgroundColor image={image} client:load/>
+  <div class="w-full flex flex-col z-10 relative">
+    <BackButton/>
+    <div class="w-full flex justify-center items-center ">
+      <Image src={image} alt={name} class="w-52 rounded-[1px] shadow-[0_0_80px_0_rgba(0,0,0,0.8)]" transition:name={id+"-to-page"} id="image">
+    </div>
+    <h1>{name}</h1>
+    <h2>{artist}</h2>
+  </div>
+  </main>
+</Layout>
+
